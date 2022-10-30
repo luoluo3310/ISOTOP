@@ -19,20 +19,20 @@
 import { ethers } from "ethers";
 ```
 
-## 2. 用工厂合约创建NFT子合约
+## 2. 获得工厂合约对象
 
-要使用IISOTOP1013合约，首先需要从工厂合约创建一个子合约对象
+要使用IISOTOP1013合约，首先需要获得工厂合约对象
  ```javascript
-     const IISOTOP1013 = await ethers.getContractAt('IIsotopFactory',FactoryContractAddr);
+     const Factory = await ethers.getContractAt('IIsotopFactory',FactoryContractAddr);
  ```
- 其中`FactoryContractAddr`是工厂合约地址，`IISOTOP1013`是生成的NFT子合约对象
+ 其中`FactoryContractAddr`是工厂合约地址，`Factory`是生成的工厂合约对象
  
 ## 3.  查询子合约地址并获得`IISOTOP`对象
   然后查询子合约地址，使用`IISOTOP1013.getContractsDeployed()`方法获得`IISOTOP1013Addr`
 
   ```js
       let IISOTOP1013AddrArray = new Array();
-      IISOTOP1013AddrArray = await IISOTOP1013.getContractsDeployed();
+      IISOTOP1013AddrArray = await Factory.getContractsDeployed();
       IISOTOP1013Addr = IISOTOP1013AddrArray[IISOTOP1013AddrArray.length-1];
   ```
 之后根据`IISOTOP1013Addr`获得对象`IISOTOP`，就可以调用它的各种方法了
