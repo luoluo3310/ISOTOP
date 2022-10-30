@@ -27,7 +27,7 @@ import { ethers } from "ethers";
  ```
  其中`FactoryContractAddr`是工厂合约地址，`IISOTOP1013`是生成的NFT子合约对象
  
-## 3.  查询子合约地址
+## 3.  查询子合约地址并获得`IISOTOP`对象
   然后查询子合约地址，使用`IISOTOP1013.getContractsDeployed()`方法获得`IISOTOP1013Addr`
 
   ```js
